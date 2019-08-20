@@ -45,7 +45,7 @@ with open('StudentDatas.csv', 'r') as csvFile:
 
 
 
-
+print("new csv file finish")
 
 
 
@@ -132,7 +132,7 @@ for i in list_of_students:
             user.write("local_root=/var/www/html/"+student[5])
             user.close()
             i=i+1
-
+            print("loop finish")
 
             #send an email with user login info
 #             message = MIMEMultipart("alternative")
