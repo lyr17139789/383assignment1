@@ -1,13 +1,14 @@
 import os
+os.system("sudo -s")
 os.system("sudo apt-get install vim")
-os.system("sudo apt install apache2 mysql-client mysql-server php libapache2-mod-php")
+os.system("sudo apt -y install apache2 mysql-client mysql-server php libapache2-mod-php")
 
-os.system("sudo apt install graphviz aspell ghostscript clamav php7.2-pspell php7.2-curl php7.2-gd php7.2-intl php7.2-mysql php7.2-xml php7.2-xmlrpc php7.2-ldap php7.2-zip php7.2-soap php7.2-mbstring")
+os.system("sudo apt -y install graphviz aspell ghostscript clamav php7.2-pspell php7.2-curl php7.2-gd php7.2-intl php7.2-mysql php7.2-xml php7.2-xmlrpc php7.2-ldap php7.2-zip php7.2-soap php7.2-mbstring")
 print("Install Additional Software finished")
 
 os.system("sudo service apache2 restart")
 
-os.system("sudo apt install git")
+os.system("sudo apt -y install git")
 print("git download finished")
 
 os.system("sudo apt-get install python3-pip")
@@ -61,11 +62,8 @@ if position != -1:
 os.system("sudo chmod o-w mysqld.cnf ")
 print("permission changed")
 
-import random
 
-
-os.system("sudo -s")
-os.system("apt-get install vsftpd")
+os.system("sudo apt-get install vsftpd")
 print("install vsftep finished")
 r = os.popen("curl ifconfig.me")
 ip = r.read()
