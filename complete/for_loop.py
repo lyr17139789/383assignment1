@@ -8,7 +8,7 @@ os.system("sudo pip3 install pandas")
 print("panas install finished")
 
 import pandas as pd
-import pymsql
+import pymysql
 
 
 with open('StudentData.csv', 'r') as csvFile:
