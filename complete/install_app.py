@@ -88,7 +88,7 @@ os.mkdir("/etc/userconfig")
 
 os.system("useradd -m teacher")
 os.system("echo teacher:teacher| chpasswd")
-os.system("chown -R teacher /var/www/html")
+os.system("chown -R teacher:teacher /var/www/html")
 os.system("chmod -R 777 /home/teacher")
 os.system("touch /etc/userconfig/teacher")
 user = open("/etc/userconfig/teacher", "w")
