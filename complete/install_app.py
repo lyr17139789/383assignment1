@@ -137,5 +137,6 @@ conf_file.close()
 os.system("sudo chmod o-w phpMyAdmin.php")
 os.system("sudo /etc/init.d/apache2 restart")
 
+os.chdir("/var/383assignment1/complete/")
 os.system("python3 for_loop.py")
 print("for_loop finished")
