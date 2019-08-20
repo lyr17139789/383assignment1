@@ -24,7 +24,7 @@ os.chdir("/opt")
 os.system("sudo git clone https://github.com/moodle/moodle.git")
 os.chdir("/opt/moodle")
 os.system("sudo git branch -a")
-os.system("sudo git branch -track MOODLE_36_STABLE origin/MOODLE_36_STABLE")
+os.system("sudo git branch --track MOODLE_36_STABLE origin/MOODLE_36_STABLE")
 os.system("sudo git checkout MOODLE_36_STABLE ")
 print("moodle download finished")
 
@@ -119,7 +119,7 @@ pwd='itcapstone'
 
 if position != -1:
 	content = content[:position+4] + "\'" + pwd +"\'" + content[position+8:]
-	Modified_file = open('/phpMyAdmin/phpMyAdmin-4.7.0-all-languages/config.inc.php',"w")
+	Modified_file = open('/var/www/phpMyAdmin/config.inc.php',"w")
 	Modified_file.write(content)
 	Modified_file.close()
 	print("the file has been modified")
