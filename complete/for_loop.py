@@ -91,9 +91,10 @@ cursor=conn.cursor()
 
 
 
-
+print(list_of_students)
 
 for i in list_of_students:
+        print(i[0])
         SQLcmd1=cursor.execute("create database student%s default character set utf8 collate utf8_general_ci;",i[0])
         SQLcmd3=cursor.execute(" create user student%s@'%%' identified by %s;",(i[0],i[3]))
         SQLcmd4=cursor.execute("GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON student%s.* TO student%s@'%%' IDENTIFIED BY %s;",(i[0],i[0],i[3]))
