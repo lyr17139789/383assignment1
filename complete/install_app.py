@@ -11,6 +11,7 @@ os.system("sudo service apache2 restart")
 os.system("sudo apt  install git -y")
 print("git download finished")
 
+os.system("sudo apt-get update")
 os.system("sudo apt-get install python3-pip -y")
 os.system("sudo pip3 install --upgrade pip")
 os.system("sudo pip3 install pymysql ")
