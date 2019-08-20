@@ -59,13 +59,14 @@ if position != -1:
 
 #change the permission back
 os.system("sudo chmod o-w mysqld.cnf ")
-
+print("permission changed")
 
 import random
 
 
 os.system("sudo -s")
 os.system("apt-get install vsftpd")
+print("install vsftep finished")
 r = os.popen("curl ifconfig.me")
 ip = r.read()
 r.close()
