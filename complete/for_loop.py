@@ -3,7 +3,13 @@ import os
 # read the csv file exp file:csv_example new csv file:csv_examples
 import csv
 import random,string
+
+os.system("sudo pip3 install pandas")
+print("panas install finished")
+
 import pandas as pd
+
+
 
 with open('StudentData.csv', 'r') as csvFile:
         reader = csv.reader(csvFile)
