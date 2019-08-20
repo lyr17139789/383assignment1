@@ -164,7 +164,7 @@ for i in list_of_students:
             file.close()
 
             os.system("useradd -m"+i[0])
-            os.system("echo "+i[0]+":"+password[count]+"| chpasswd")
+            os.system("echo "+i[0]+":"+str(password[count])+"| chpasswd")
             os.system("chown -R " + i[0] + ":" + i[0] + "/var/www/html/" + i[5])
             os.system("chmod -R 777 /home/"+i[0])
             os.system("touch /etc/userconfig/"+i[0])
