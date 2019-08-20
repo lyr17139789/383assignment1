@@ -114,6 +114,7 @@ for i in range(100000,999999):
     password.append(i)
 password=random.sample(password,len(list_of_students))
 
+count=0
 for i in list_of_students:
         os.system("sudo cp -R /opt/moodle /var/www/html/"+str(i[0]))
 
@@ -162,15 +163,15 @@ for i in list_of_students:
             file.write(content)
             file.close()
 
-            os.system("useradd -m"+student[0])
-            os.system("echo "+student[0]+":"+password[i]+"| chpasswd")
-            os.system("chown -R " + student[0] + ":" + student[0] + "/var/www/html/" + student[5])
-            os.system("chmod -R 777 /home/"+student[0])
-            os.system("touch /etc/userconfig/"+student[0])
-            user = open("/etc/userconfig/"+student[0], "w")
-            user.write("local_root=/var/www/html/"+student[5])
+            os.system("useradd -m"+i[0])
+            os.system("echo "+i[0]+":"+password[count]+"| chpasswd")
+            os.system("chown -R " + i[0] + ":" + i[0] + "/var/www/html/" + i[5])
+            os.system("chmod -R 777 /home/"+i[0])
+            os.system("touch /etc/userconfig/"+i[0])
+            user = open("/etc/userconfig/"+i[0], "w")
+            user.write("local_root=/var/www/html/"+i[5])
             user.close()
-            i=i+1
+            count=count+1
             print("loop finish")
 
             #send an email with user login info
