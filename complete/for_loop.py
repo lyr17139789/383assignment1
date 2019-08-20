@@ -94,14 +94,20 @@ cursor=conn.cursor()
 print(list_of_students)
 
 for i in list_of_students:
-        print(i[0])
-        SQLcmd1=cursor.execute("create database student%s default character set utf8 collate utf8_general_ci;",i[0])
-        SQLcmd3=cursor.execute(" create user student%s@'%%' identified by %s;",(i[0],i[3]))
-        SQLcmd4=cursor.execute("GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON student%s.* TO student%s@'%%' IDENTIFIED BY %s;",(i[0],i[0],i[3]))
+        str1="create database student%s default character set utf8 collate utf8_general_ci;"%i[0]
+        print(str1)
+        SQLcmd1=cursor.execute(str1)
+        str2="create user %s@'%%' identified by %s;"%(i[4],i[5])
+        prit(str2)
+        SQLcmd3=cursor.execute(str2)
+        str3="GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON %s.* TO student%s@'%%' IDENTIFIED BY %s;"%(i[4],i[0],i[5])
+        SQLcmd4=cursor.execute(str3)
         SQLcmd6=cursor.execute("flush privileges;")
 conn.commit()
 cursor.close()
 conn.close()
+print("create mysql user finished")
+
 
 password=[]
 for i in range(100000,999999):
