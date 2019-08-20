@@ -98,7 +98,7 @@ for i in list_of_students:
         print(str1)
         SQLcmd1=cursor.execute(str1)
         str2="create user %s@'%%' identified by %s;"%(i[4],i[5])
-        prit(str2)
+        print(str2)
         SQLcmd3=cursor.execute(str2)
         str3="GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON %s.* TO student%s@'%%' IDENTIFIED BY %s;"%(i[4],i[0],i[5])
         SQLcmd4=cursor.execute(str3)
