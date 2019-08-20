@@ -1,19 +1,19 @@
 import os
 print("hhh")
-os.system("sudo apt-get install vim")
-os.system("sudo apt -y install apache2 mysql-client mysql-server php libapache2-mod-php")
+os.system("sudo apt-get install vim -y")
+os.system("sudo apt install apache2 mysql-client mysql-server php libapache2-mod-php -y")
 
-os.system("sudo apt -y install graphviz aspell ghostscript clamav php7.2-pspell php7.2-curl php7.2-gd php7.2-intl php7.2-mysql php7.2-xml php7.2-xmlrpc php7.2-ldap php7.2-zip php7.2-soap php7.2-mbstring")
+os.system("sudo apt  install graphviz aspell ghostscript clamav php7.2-pspell php7.2-curl php7.2-gd php7.2-intl php7.2-mysql php7.2-xml php7.2-xmlrpc php7.2-ldap php7.2-zip php7.2-soap php7.2-mbstring -y")
 print("Install Additional Software finished")
 
 os.system("sudo service apache2 restart")
 
-os.system("sudo apt -y install git")
+os.system("sudo apt  install git -y")
 print("git download finished")
 
-os.system("sudo apt-get install python3-pip")
+os.system("sudo apt-get install python3-pip -y")
 os.system("sudo pip3 install --upgrade pip")
-os.system("sudo pip3 install pymysql")
+os.system("sudo pip3 install pymysql ")
 import pymysql
 #import csv
 # read the csv file
