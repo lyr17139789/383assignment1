@@ -116,7 +116,7 @@ password=random.sample(password,len(list_of_students))
 
 count=0
 for i in list_of_students:
-        os.system("sudo cp -R /opt/moodle /var/www/html/"+str(i[0]))
+        os.system("sudo cp -R /opt/moodle /var/www/html/"+str(i[4]))
         print("copy22222222222222222222222222222222222222222222222222222222222222222222222222")
 
         os.chdir("/var")
@@ -164,15 +164,15 @@ for i in list_of_students:
             file.write(content)
             file.close()
 
-            os.system("useradd -m"+i[0])
-            os.system("echo "+i[0]+":"+str(password[count])+"| chpasswd")
-            os.system("chown -R " + i[0] + ":" + i[0] + "/var/www/html/" + i[5])
-            os.system("chmod -R 777 /home/"+i[0])
+            os.system("useradd -m %s"%(i[0]))
+            os.system("echo %s:%s| chpasswd"%(i[0],str(password[count])))
+            os.system("chown -R %s:%s /var/www/html/%s"%(i[0],i[0],i[4]))
+            os.system("chmod -R 777 /home/%s"%(i[0]))
             
             os.system("touch /etc/userconfig/"+i[0])
             print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
             user = open("/etc/userconfig/"+i[0], "w")
-            user.write("local_root=/var/www/html/"+i[5])
+            user.write("local_root=/var/www/html/"+i[4])
             print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh22222222222222222222222222222222")
             user.close()
             count=count+1
