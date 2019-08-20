@@ -1,5 +1,6 @@
 import os
 os.system("sudo -s")
+print("hhh")
 os.system("sudo apt-get install vim")
 os.system("sudo apt -y install apache2 mysql-client mysql-server php libapache2-mod-php")
 
