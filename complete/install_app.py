@@ -33,7 +33,7 @@ os.system("sudo cp -R /opt/moodle /var/www/html/")
 os.system("sudo mkdir /var/moodledata")
 os.system("sudo chown -R www-data /var/moodledata")
 os.system("sudo chmod -R 777 /var/moodledata")
-os.system("chmod -R 0755 /var/www/html/moodle ")
+os.system("chmod -R 777 /var/www/html ")
 
 print("copy local repository finished")
 
