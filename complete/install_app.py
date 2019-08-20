@@ -97,6 +97,7 @@ user.close()
 os.system("sudo service vsftpd restart")
 
 os.chdir("/var/www/html")
+os.system("sudo apt-get install unzip -y")
 os.system("sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.0/phpMyAdmin-4.7.0-all-languages.zip")
 os.system("sudo unzip phpMyAdmin-4.7.0-all-languages.zip")
 os.system("sudo mv phpMyAdmin-4.7.0-all-languages phpMyAdmin")
