@@ -8,7 +8,7 @@ os.system("sudo pip3 install pandas")
 print("panas install finished")
 
 import pandas as pd
-
+import pymsql
 
 
 with open('StudentData.csv', 'r') as csvFile:
@@ -60,7 +60,33 @@ r = os.popen("curl ifconfig.me")
 ip = r.read()
 r.close()
 
-conn = pymysql.connect(host='127.0.0.1',port=3306, user='debian-sys-maint',passwd="lO5k3KdhTU0LoEey")
+
+os.chdir('/etc/mysql/')
+os.system("sudo chmod o+w debian.cnf")
+os.system("sudo chmod o+r debian.cnf")
+
+data=""
+pwdfile = open('/etc/mysql/debian.cnf',"r")
+pwdcontent = pwdfile.read()
+
+pos = pwdcontent.find("[mysql_upgrade]\nhost     = localhost")
+lenth=len('[mysql_upgrade]\nhost     = localhost')
+UAP=(pwdcontent[pos+lenth:])
+
+pos_user=UAP.find('user     = ')
+pos_pwd=UAP.find('password = ')
+pos_socket=UAP.find('socket')
+
+TopUser=UAP[pos_user+len('user     = '):pos_pwd].strip()
+TopPwd=UAP[pos_pwd+len('password = '):pos_socket].strip()
+
+os.system("sudo chmod o-w debian.cnf")
+os.system("sudo chmod o-r debian.cnf")
+print("top pwd find finish",TopUser,TopPwd)
+
+
+
+conn = pymysql.connect(host='127.0.0.1',port=3306, user=TopUser,passwd=TopPwd)
 cursor=conn.cursor()
 
 
