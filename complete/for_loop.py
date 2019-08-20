@@ -132,7 +132,7 @@ for i in list_of_students:
             os.system("sudo chmod -R 777 /var/data"+str(i[0]))
             os.chdir("/var/www/html/")
             os.chmod(str(i[4]),777)
-            os.chdir(str(i[0]))
+            os.chdir(str(i[4]))
             if os.path.isfile("config.php"):
                     os.system("rm -rf config.php")
 
@@ -155,7 +155,7 @@ for i in list_of_students:
                     "  'dbcollation' => 'utf8mb4_unicode_ci',\n" \
                     ");\n" \
                     "$CFG->wwwroot   = 'http://"+str(ip)+"/"+str(i[4])+"';\n" \
-                    "$CFG->dataroot  = '/var/moodledata';\n" \
+                    "$CFG->dataroot  = '/var/data"+str(i[0])+"';\n" \
                     "$CFG->admin     = 'admin';\n" \
                     "$CFG->directorypermissions = 0777;\n" \
                     "require_once(__DIR__ . '/lib/setup.php');\n"
