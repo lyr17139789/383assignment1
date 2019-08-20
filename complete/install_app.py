@@ -119,7 +119,7 @@ pwd='itcapstone'
 
 if position != -1:
 	content = content[:position+4] + "\'" + pwd +"\'" + content[position+8:]
-	Modified_file = open('/var/www/phpMyAdmin/config.inc.php',"w")
+	Modified_file = open('/var/www/html/phpMyAdmin/config.inc.php',"w")
 	Modified_file.write(content)
 	Modified_file.close()
 	print("the file has been modified")
