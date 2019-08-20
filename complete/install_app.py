@@ -70,6 +70,7 @@ r = os.popen("curl ifconfig.me")
 ip = r.read()
 r.close()
 
+os.chdir("/var/383assignment1/complete/")
 ftp_conf = open('ftp_conf.txt',"r")
 new_content = ftp_conf.read()
 ftp_conf.close()
@@ -104,6 +105,8 @@ os.chdir("/var/www/html/phpMyAdmin")
 os.system("sudo mv config.sample.inc.php  config.inc.php")
 
 os.system("sudo chmod o+w config.inc.php")
+
+
 phpfile = open('/var/www/html/phpMyAdmin/config.inc.php',"r")
 content = phpfile.read()
 phpfile.close()
