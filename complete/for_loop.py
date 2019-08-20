@@ -145,8 +145,8 @@ for i in list_of_students:
                     "$CFG->dblibrary = 'native';\n" \
                     "$CFG->dbhost    = 'localhost';\n" \
                     "$CFG->dbname    = 'student"+str(i[0])+"';\n" \
-                    "$CFG->dbuser    = 'student"+str(i[0])+"';\n" \
-                    "$CFG->dbpass    = '"+str(i[5])+"';\n" \
+                    "$CFG->dbuser    = "'"+str(i[4])+"';\n" \
+                    "$CFG->dbpass    = "'"+str(i[5])+"';\n" \
                     "$CFG->prefix    = 'mdl_';\n" \
                     "$CFG->dboptions = array (\n" \
                     "  'dbpersist' => 0,\n" \
