@@ -97,7 +97,7 @@ for i in list_of_students:
         str1="create database student%s default character set utf8 collate utf8_general_ci;"%i[0]
         print(str1)
         SQLcmd1=cursor.execute(str1)
-        str2="create user %s@'%%' identified by %s;"%(i[4],i[5])
+        str2="create user %s@'%%' identified by '%s';"%(i[4],i[5])
         print(str2)
         SQLcmd3=cursor.execute(str2)
         str3="GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON %s.* TO student%s@'%%' IDENTIFIED BY '%s';"%(i[4],i[0],i[5])
