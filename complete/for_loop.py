@@ -28,8 +28,8 @@ adr=[]
 pas=[]
 pasftp=[]
 for i in range(100000,999999):
-    password.append(i)
-password=random.sample(password,len(list_of_students))
+    pasftp.append(i)
+pasftp=random.sample(pasftp,len(list_of_students))
 for i in random.sample(range(1,n),n-1):
     if len(str(i))>=4 and len(adr)<num:
         adr.append(str(i)+random.choice(s))
