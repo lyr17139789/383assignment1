@@ -190,7 +190,7 @@ for i in list_of_students:
 #             text = """\
 #                     Subject: Your Login info
             
-#                     Username: """ + 'student'+str(i[0]) + """
+#                     Username: """ + 'student'+str(i[4]) + """
 #                     Password: """ + str(i[5]) + """
 #                     Access your Moodle site through this URL: """+'http://'+str(ip)+'/'+str(i[4])
 
