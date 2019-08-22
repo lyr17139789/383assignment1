@@ -26,6 +26,10 @@ num=len(list_of_students)
 s = string.ascii_lowercase
 adr=[]
 pas=[]
+pasftp=[]
+for i in range(100000,999999):
+    password.append(i)
+password=random.sample(password,len(list_of_students))
 for i in random.sample(range(1,n),n-1):
     if len(str(i))>=4 and len(adr)<num:
         adr.append(str(i)+random.choice(s))
@@ -35,10 +39,11 @@ for i in random.sample(range(1,m),m-1):
 data = pd.read_csv(r'StudentData.csv')
 data1 = adr
 data2 = pas
+data3 = pasftp
 data['moodle_name'] = data1
 data['password'] = data2
+data['ftppassword'] = data3
 data.to_csv(r"StudentDatas.csv",mode = 'a',index =False)
-
 with open('StudentDatas.csv', 'r') as csvFile:
         reader = csv.reader(csvFile)
         # create empty list
@@ -109,10 +114,7 @@ conn.close()
 print("create mysql user finished")
 
 
-password=[]
-for i in range(100000,999999):
-    password.append(i)
-password=random.sample(password,len(list_of_students))
+
 
 count=0
 for i in list_of_students:
@@ -165,7 +167,7 @@ for i in list_of_students:
             file.close()
 
             os.system("useradd -m %s"%(i[0]))
-            os.system("echo %s:%s| chpasswd"%(i[0],str(password[count])))
+            os.system("echo %s:%s| chpasswd"%(i[0],str(i[6])))
             os.system("chown -R %s:%s /var/www/html/%s"%(i[0],i[0],i[4]))
             os.system("chmod -R 777 /home/%s"%(i[0]))
             
@@ -201,4 +203,3 @@ for i in list_of_students:
 #                     server.sendmail(
 #                             sender_email, str(i[3]), message.as_string()
 #             )
-
