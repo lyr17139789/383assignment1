@@ -119,7 +119,7 @@ print("create mysql user finished")
 count=0
 for i in list_of_students:
         os.system("sudo cp -R /opt/moodle /var/www/html/"+str(i[4]))
-        print("copy22222222222222222222222222222222222222222222222222222222222222222222222222")
+       
 
         os.chdir("/var")
         if os.path.exists("data"+str(i[0])):
@@ -127,7 +127,7 @@ for i in list_of_students:
         else:
            
             os.system("mkdir data"+str(i[0]))
-            print("data111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
+            
             os.chdir("/var/www/html/")
 
             os.system("sudo chown -R www-data /var/data"+str(i[0]))
@@ -172,13 +172,13 @@ for i in list_of_students:
             os.system("chmod -R 777 /home/%s"%(i[0]))
             
             os.system("touch /etc/userconfig/"+i[0])
-            print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+            
             user = open("/etc/userconfig/"+i[0], "w")
             user.write("local_root=/var/www/html/"+i[4])
-            print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh22222222222222222222222222222222")
+            
             user.close()
             count=count+1
-            print("loop finish")
+            print("loop finish for data%s"%(i[0]))
 
             #send an email with user login info
 #             message = MIMEMultipart("alternative")
