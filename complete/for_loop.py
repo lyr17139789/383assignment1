@@ -119,7 +119,7 @@ print("create mysql user finished")
 count=0
 for i in list_of_students:
         os.system("sudo cp -R /opt/moodle /var/www/html/"+str(i[4]))
-       
+             
 
         os.chdir("/var")
         if os.path.exists("data"+str(i[0])):
@@ -178,6 +178,7 @@ for i in list_of_students:
             
             user.close()
             count=count+1
+            os.system("sudo chmod -R 777 /var/www/html")  
             print("loop finish for data%s"%(i[0]))
 
             #send an email with user login info
