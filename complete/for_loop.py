@@ -99,15 +99,18 @@ cursor=conn.cursor()
 print(list_of_students)
 
 for i in list_of_students:
-        str1="create database student%s default character set utf8 collate utf8_general_ci;"%i[0]
-        print(str1)
-        SQLcmd1=cursor.execute(str1)
-        str2="create user %s@'%%' identified by '%s';"%(i[4],i[5])
-        print(str2)
-        SQLcmd3=cursor.execute(str2)
-        str3="GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON student%s.* TO %s@'%%' IDENTIFIED BY '%s';"%(i[0],i[4],i[5])
-        SQLcmd4=cursor.execute(str3)
-        SQLcmd6=cursor.execute("flush privileges;")
+        if os.path.exists("data"+str(i[0])):
+            print("exits data%s"%(i[0]))
+        else:
+                str1="create database student%s default character set utf8 collate utf8_general_ci;"%i[0]
+                print(str1)
+                SQLcmd1=cursor.execute(str1)
+                str2="create user %s@'%%' identified by '%s';"%(i[4],i[5])
+                print(str2)
+                SQLcmd3=cursor.execute(str2)
+                str3="GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON student%s.* TO %s@'%%' IDENTIFIED BY '%s';"%(i[0],i[4],i[5])
+                SQLcmd4=cursor.execute(str3)
+                SQLcmd6=cursor.execute("flush privileges;")
 conn.commit()
 cursor.close()
 conn.close()
