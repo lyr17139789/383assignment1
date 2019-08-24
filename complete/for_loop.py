@@ -2,6 +2,11 @@ import os
 # read the csv file exp file:csv_example new csv file:csv_examples
 import csv
 import random,string
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+sender_email = "158120.Moodle@gmail.com"
+password = "moodle123"
 
 os.system("sudo pip3 install pandas")
 print("panas install finished")
