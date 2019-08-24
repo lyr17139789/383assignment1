@@ -1,4 +1,3 @@
-
 import os
 # read the csv file exp file:csv_example new csv file:csv_examples
 import csv
@@ -9,12 +8,6 @@ print("panas install finished")
 
 import pandas as pd
 import pymysql
-
-import smtplib, ssl
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-sender_email = "158120.Moodle@gmail.com"
-password = "moodle123"
 
 
 with open('StudentData.csv', 'r') as csvFile:
@@ -190,29 +183,26 @@ for i in list_of_students:
             os.system("sudo chmod -R 777 /var/www/html")  
             print("loop finish for data%s"%(i[0]))
 
-                
-            
+            #send an email with user login info
             message = MIMEMultipart("alternative")
             message["Subject"] = "Moodle account information"
             message["From"] = sender_email
             message["To"] = str(i[3])
 
-            text = """
-                FTP server login information:
-                Username: """ + str(i[0]) + """
-                Password: """ + str(i[6]) + """
-                phpMyAdmin login information:
-                Username: """ + str(i[4]) + """
-                Password: """ + str(i[5])+ """
-                Access your Moodle site through this URL:"""+ 'http://'+str(ip)+'/'+str(i[4])
 
+            text = """\
+                    Subject: Your Login info
+            
+                    Username: """ + 'student'+str(i[4]) + """
+                    Password: """ + str(i[5]) + """
+                    Access your Moodle site through this URL: """+'http://'+str(ip)+'/'+str(i[4])
 
             part1 = MIMEText(text, "plain")
             message.attach(part1)
+            # Create secure connection with server and send email
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-                server.login(sender_email, password)
-                server.sendmail(
-                        sender_email, str(i[3]), message.as_string()
+                    server.login(sender_email, password)
+                    server.sendmail(
+                            sender_email, str(i[3]), message.as_string()
             )
-
