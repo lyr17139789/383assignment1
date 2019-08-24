@@ -195,12 +195,14 @@ for i in list_of_students:
             message["To"] = str(i[3])
 
 
-            text = """\
-                    Subject: Your Login info
-            
-                    Username: """ + 'student'+str(i[4]) + """
-                    Password: """ + str(i[5]) + """
-                    Access your Moodle site through this URL: """+'http://'+str(ip)+'/'+str(i[4])
+            text = """
+                FTP server login information:
+                Username: """ + str(i[0]) + """
+                Password: """ + str(i[6]) + """
+                phpMyAdmin login information:
+                Username: """ + str(i[4]) + """
+                Password: """ + str(i[5])+ """
+                Access your Moodle site through this URL:"""+ 'http://'+str(ip)+'/'+str(i[4])
 
             part1 = MIMEText(text, "plain")
             message.attach(part1)
