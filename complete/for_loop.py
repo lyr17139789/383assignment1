@@ -97,9 +97,9 @@ cursor=conn.cursor()
 
 
 print(list_of_students)
-
+os.chdir("/var")
 for i in list_of_students:
-        if os.path.exists("data"+str(i[0])):
+        if os.path.exists("data"+str(i[0])) or i[0]=="student id":
             print("exits data%s"%(i[0]))
         else:
                 str1="create database student%s default character set utf8 collate utf8_general_ci;"%i[0]
@@ -125,7 +125,7 @@ for i in list_of_students:
              
 
         os.chdir("/var")
-        if os.path.exists("data"+str(i[0])):
+        if os.path.exists("data"+str(i[0])) or i[0]=="student id":
             print("exits")
         else:
            
