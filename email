@@ -1,0 +1,40 @@
+
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+list_of_students = [[1,'q','a','thomas.j.purdie@gmail.com','6770v','969921','302449']]
+ip = "192.168.1.1"
+sender_email = "158120.Moodle@gmail.com"
+receiver_email = "your@gmail.com"
+password = "moodle123"
+
+for i in list_of_students:
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "Moodle account information"
+    message["From"] = sender_email
+    message["To"] = str(i[3])
+
+    # Create the plain-text and HTML version of your message
+    text = """
+        FTP server login information:
+        Username: """ + str(i[0]) + """
+        Password: """ + str(i[6]) + """
+        phpMyAdmin login information:
+        Username: """ + str(i[4]) + """
+        Password: """ + str(i[5])+ """
+        Access your Moodle site through this URL:"""+ 'http://'+str(ip)+'/'+str(i[4])
+
+    # Turn these into plain/html MIMEText objects
+    part1 = MIMEText(text, "plain")
+
+    # Add HTML/plain-text parts to MIMEMultipart message
+    # The email client will try to render the last part first
+    message.attach(part1)
+    # Create secure connection with server and send email
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(
+            sender_email, str(i[3]), message.as_string()
+    )
