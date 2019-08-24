@@ -15,6 +15,15 @@ os.system("sudo apt-get update")
 os.system("sudo apt-get install python3-pip -y")
 os.system("sudo pip3 install --upgrade pip")
 os.system("sudo pip3 install pymysql ")
+
+#open port
+os.system("sudo gcloud compute firewall-rules create new-allow-tcp-20 --network default --allow tcp:20 --direction INGRESS")
+os.system("sudo gcloud compute firewall-rules create new-allow-tcp-21 --network default --allow tcp:21 --direction INGRESS")
+os.system("sudo gcloud compute firewall-rules create new-allow-tcp-7000 --network default --allow tcp:6000-7000 --direction INGRESS")
+os.system("sudo gcloud compute firewall-rules create new-allow-tcp-20out --network default --allow tcp:20 --direction EGRESS")
+os.system("sudo gcloud compute firewall-rules create new-allow-tcp-21out --network default --allow tcp:21 --direction EGRESS")
+os.system("sudo gcloud compute firewall-rules create new-allow-tcp-7000out --network default --allow tcp:6000-7000 --direction EGRESS")
+print("the port has opened")
 import pymysql
 #import csv
 # read the csv file
