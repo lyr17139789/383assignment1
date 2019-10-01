@@ -1,0 +1,11 @@
+gcloud sql tiers list
+gcloud sql instances create [INSTANCE_NAME] --tier=[MACHINE_TYPE] --region=[REGION]
+
+#gcloud sql instances create my-moodle --tier=db-n1-standard-2 --region=europe-west2
+
+gcloud sql instances patch --assign-ip my-moodle
+gcloud sql users set-password root --host % --instance my-moodle --password Moodle123moodle
+gcloud sql instances patch my-moodle --authorized-networks=35.201.2.107
+
+
+gcloud sql connect my-moodle --user=root
