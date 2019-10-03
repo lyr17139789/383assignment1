@@ -1,0 +1,47 @@
+body
+{
+background:url('http://blog.hostbaby.com/wp-content/uploads/2014/03/PaintSquares_1400x900-1024x658.jpg')
+;
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+img {
+    width:100%;
+     max-width:80%;
+    height:auto;
+    border-radius:8px;
+}
+h1,h2 {
+text-shadow: 5px 5px 5px #95CACA;
+text-align:left;
+text-decoration:overline;letter-spacing:2px;}
+form{
+text-align:left;
+}
+h3{
+text-align:left;
+}
+input {
+    color: green;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+}
+input:hover {
+    background-color:green; /* Green */
+    color: white;
+}
+footer{
+        color:white;
+     text-align:center;
+     background-color:#5F9EA0;
+     font-size: 15px;
+	  border-radius: 15px;
+    border: 2px solid #8AC007;
+    width:100%;
+    height:5%;
+    margin-top:10%;
+}

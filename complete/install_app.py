@@ -106,9 +106,36 @@ os.system("sudo wget https://files.phpmyadmin.net/phpMyAdmin/4.7.0/phpMyAdmin-4.
 os.system("sudo unzip phpMyAdmin-4.7.0-all-languages.zip")
 os.system("sudo mv phpMyAdmin-4.7.0-all-languages phpMyAdmin")
 
+
 os.system("sudo /etc/init.d/apache2 restart")
 os.system("sudo service apache2 restart")
+os.system("python3 cgi_setting.py")
+os.system("sudo mv /var/383assignment1/complete/helphtml.zip /var/www/html ")
+os.system("sudo unzip help.zip")
+os.chdir("help/")
+os.system("sudo cp -R ./* /var/www/html")
+os.system("sudo dos2unix /var/www/html/cgi-bin/teacher.py")
+os.system("sudo dos2unix /var/www/html/cgi-bin/student.py")
+os.system("sudo dos2unix /var/www/html/cgi-bin/mybackup.py")
+os.system("chmod +x /var/www/html/cgi-bin/teacher.py")
+os.system("chmod +x /var/www/html/cgi-bin/student.py")
+os.system("chmod +x /var/www/html/cgi-bin/mybackup.py")
+os.system("sudo mkfs.ext4 -m 0 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb")
+os.system("sudo chmod a+w -R /mnt")
+os.system("sudo mkdir /mnt/moodledata")
+os.system("sudo mkdir /mnt/backup")
 
 os.chdir("/var/383assignment1/complete/")
-os.system("python3 for_loop.py")
+unanswered = True
+while unanswered == True:
+    choice = input("Would you like 1.the students to install 2.automatically install")
+    if str(choice) == "1" or str(choice) == "2":
+        unanswered = False
+    else:
+        print("wrong option. choose 1 or 2")
+
+if choice == "1":
+    os.system("python3 for_loop.py")
+if choice == "2":
+    os.system("python3 express.py")
 print("for_loop finished")

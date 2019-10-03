@@ -1,0 +1,30 @@
+
+<html>
+<title>Restore</title>
+<body><center>
+<H1>Backup recovery</H1>
+<script type="text/javascript">
+var ip= window.location.href.split('/')[2];
+function Goback(){
+        window.location.href='http://'+ ip + '/student.html'
+        }
+</script>
+
+<form action="cgi-bin/restoreFiles.py" method="POST">
+Which one you want to restore:
+
+    <select name="app">
+  <option value ="file">moodle file</option>
+  <option value="mysql">mysql</option>
+  <option value="site">moodle site</option>
+</select><br>
+Username:<br><input type="text" name="user" value="" size=40><br>
+Password:<br><input type="text" name="pwd" value="" size=40><br>
+
+<br><input type="submit" value="restore">
+<input type="button" value="go back" onclick="Goback()">
+</form>
+
+</center>
+
+</body>

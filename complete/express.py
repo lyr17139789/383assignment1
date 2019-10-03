@@ -58,8 +58,8 @@ with open('StudentDatas.csv', 'r') as csvFile:
                 # Remove metadata from top row
         list_of_students.pop(0)
 
-
 os.system("sudo cp -R /var/383assignment1/complete/StudentDatas.csv /var/www/html/cgi-bin")
+
 
 print("new csv file finish")
 
@@ -69,6 +69,7 @@ print("new csv file finish")
 r = os.popen("curl ifconfig.me")
 ip = r.read()
 r.close()
+
 
 sqlip = open('ip.txt',"r")
 a = sqlip.read()
@@ -106,15 +107,15 @@ print("create mysql user finished")
 count=0
 for i in list_of_students:
         os.system("sudo cp -R /opt/moodle /var/www/html/"+str(i[4]))
-             
+
 
         os.chdir("/var")
         if os.path.exists("/mnt/moodledata/data"+str(i[0])) or i[0]=="student id":
             print("exits")
         else:
-           
-            os.system("mkdir data"+str(i[0]))
-            
+
+            os.system("mkdir /mnt/moodledata/data"+str(i[0]))
+
             os.chdir("/var/www/html/")
 
             os.system("sudo chown -R www-data /var/data"+str(i[0]))
@@ -124,51 +125,26 @@ for i in list_of_students:
             os.chdir(str(i[4]))
             if os.path.isfile("config.php"):
                     os.system("rm -rf config.php")
+            os.system("""sudo /usr/bin/php admin/cli/install.php --wwwroot=http://"""+str(ip)+"/"+str(i[4])+""" --dataroot=/var/data"""+str(i[0])+""" --dbtype=mysqli --dbhost="""+a+""" --dbname=student"""+str(i[0])+""" --dbuser="""+str(i[4])+""" --dbpass="""+str(i[5])+""" --fullname="""+str(i[4])+"""moodle --shortname=120moodle --adminpass="""+str(i[5])+""" --non-interactive --agree-license""")
 
-            os.system("touch config.php ")
-            data="<?php  // Moodle configuration file\n" \
-                    "unset($CFG);\n" \
-                    "global $CFG;\n" \
-                    "$CFG = new stdClass();\n" \
-                    "$CFG->dbtype    = 'mysqli';\n" \
-                    "$CFG->dblibrary = 'native';\n" \
-                    "$CFG->dbhost    = 'localhost';\n" \
-                    "$CFG->dbname    = 'student"+str(i[0])+"';\n" \
-                    "$CFG->dbuser    = '"+str(i[4])+"';\n" \
-                    "$CFG->dbpass    = '"+str(i[5])+"';\n" \
-                    "$CFG->prefix    = 'mdl_';\n" \
-                    "$CFG->dboptions = array (\n" \
-                    "  'dbpersist' => 0,\n" \
-                    "  'dbport' => '',\n" \
-                    "  'dbsocket' => '',\n" \
-                    "  'dbcollation' => 'utf8mb4_unicode_ci',\n" \
-                    ");\n" \
-                    "$CFG->wwwroot   = 'http://"+str(ip)+"/"+str(i[4])+"';\n" \
-                    "$CFG->dataroot  = '/var/data"+str(i[0])+"';\n" \
-                    "$CFG->admin     = 'admin';\n" \
-                    "$CFG->directorypermissions = 0777;\n" \
-                    "require_once(__DIR__ . '/lib/setup.php');\n"
-            content = data
-            file = open('config.php', "w")
-            file.write(content)
-            file.close()
+
 
             os.system("useradd -m %s"%(i[0]))
             os.system("echo %s:%s| chpasswd"%(i[0],str(i[6])))
             os.system("chown -R %s:%s /var/www/html/%s"%(i[0],i[0],i[4]))
             os.system("chmod -R 777 /home/%s"%(i[0]))
-            
+
             os.system("touch /etc/userconfig/"+i[0])
-            
+
             user = open("/etc/userconfig/"+i[0], "w")
             user.write("local_root=/var/www/html/"+i[4])
-            
+
             user.close()
             count=count+1
-            os.system("sudo chmod -R 777 /var/www/html")  
+            os.system("sudo chmod -R 777 /var/www/html")
             print("loop finish for data%s"%(i[0]))
 
-            #send an email with user login info
+#send an email with user login info
             message = MIMEMultipart("alternative")
             message["Subject"] = "Moodle account information"
             message["From"] = sender_email
@@ -182,7 +158,10 @@ for i in list_of_students:
                 phpMyAdmin login information:
                 Username: """ + str(i[4]) + """
                 Password: """ + str(i[5])+ """
-                Access your Moodle site through this URL:"""+ 'http://'+str(ip)+'/'+str(i[4])
+                Access your Moodle site through this URL:"""+ 'http://'+str(ip)+'/'+str(i[4]) + """
+                and the admin login information:
+                Username: admin
+                Password: """ + str(i[5])
 
             part1 = MIMEText(text, "plain")
             message.attach(part1)

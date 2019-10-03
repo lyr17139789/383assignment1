@@ -1,0 +1,30 @@
+<html>
+<title>Student help</title>
+<body><center>
+<H1>Change password</H1>
+
+<script type="text/javascript">
+var ip= window.location.href.split('/')[2];
+function Goback(){
+        window.location.href='http://'+ ip + '/student.html'
+        }
+</script>
+
+<form action="cgi-bin/teacher.py" method="POST">
+Student id:<input type="text" name="sid" value="" size=40><br>
+Please input your e-mail:<input type="text" name="teacher" value="" size=40><br>
+Which password you want to reset:
+<select name="app">
+  <option value ="moodle">moodle</option>
+  <option value ="phpmyadmin">phpmyadmin</option>
+  <option value="ftp">ftp</option>
+</select><br>
+Account:<input type="text" name="account" value="" size=40><br>
+    tips:if it is moodle site,please input website name.<br>
+New Password:<input type="text" name="pwd" value="" size=40><br>
+<br><input type="submit" value="Change">
+<input type="button" value="go back" onclick="Goback()">
+</form>
+    </center>
+
+</body>

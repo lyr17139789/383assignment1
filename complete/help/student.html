@@ -1,0 +1,36 @@
+<html>
+<title>home</title>
+<body><center>
+<H1>Student</H1>
+
+<script type="text/javascript">
+var ip= window.location.href.split('/')[2];
+        function Phpmyadmin() {
+          window.open('http://'+ ip + '/phpmyadmin')
+        }
+        function Ftp(){
+        window.open('ftp://'+ip)
+        }
+        function Modify(){
+        window.location.href='http://'+ ip + '/modify.html'
+        }
+        function Backup(){
+        window.location.href='http://'+ ip + '/mybackup.html'
+        }
+</script>
+
+<form action="cgi-bin/student.py" method="POST">
+Moodle site:<br><input type="text" name="id" value="" size=40><br>
+<br><input type="submit" value="go to my moodle">
+<input type="button" value="phpmyadmin" onclick="Phpmyadmin()">
+<input type="button" value="ftp" onclick="Ftp()">
+</form>
+
+
+<h1>Other help</h1>
+<input type="button" value="Backup recovery" onclick="Backup()">
+<input type="button" value="Password Reset" onclick="Modify()">
+
+</center>
+
+</body>
