@@ -1,5 +1,7 @@
 import os
 
+os.system("sudo python3 writeip.py")
+os.system("sudo cp -R ip.txt cgi-bin/")
 os.system("sudo apt-get install vim -y")
 os.system("sudo apt install apache2 mysql-client mysql-server php libapache2-mod-php -y")
 
@@ -110,9 +112,9 @@ os.system("sudo mv phpMyAdmin-4.7.0-all-languages phpMyAdmin")
 os.system("sudo /etc/init.d/apache2 restart")
 os.system("sudo service apache2 restart")
 os.system("python3 cgi_setting.py")
-os.system("sudo mv /var/383assignment1/complete/helphtml.zip /var/www/html ")
-os.system("sudo unzip help.zip")
+os.system("sudo mv /var/383assignment1/complete/help /var/www/html ")
 os.chdir("help/")
+os.system("sudo apt install dos2unix")
 os.system("sudo cp -R ./* /var/www/html")
 os.system("sudo dos2unix /var/www/html/cgi-bin/teacher.py")
 os.system("sudo dos2unix /var/www/html/cgi-bin/student.py")
